@@ -1,0 +1,9 @@
+1) MySQL деректер қорын (мысалы, MySQL Community Server 5.7.x) жүктеп, орнатыңыз
+       мұнда таба аласыз: http://dev.mysql.com/downloads/mysql/
+       Немесе сіз ресми MySQL докердің бейнесін пайдалана аласыз.
+
+2) ZooMedCenter дерекқорын және пайдаланушы қосу керек «db/mysql/initDB.sql»
+   және «db/mysql/populateDB.sql» сценарийлерін. Немесе, комменттен алып тастаңыз мына жолдарды
+   # spring.datasource.schema = classpath *: db/mysql/initDB.sql
+   # spring.datasource.data = classpath *: db/mysql/populateDB.sql
+     application-mysql.properties файлын. Бағдарламаны бірінші рет іске қосқан кезде.
