@@ -4,7 +4,7 @@ ALTER DATABASE zoomedcenter
   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE utf8_general_ci;
 
-GRANT ALL PRIVILEGES ON zoomedcenter.* TO root@localhost IDENTIFIED BY 'root';
+GRANT ALL PRIVILEGES ON zoomedcenter.* TO root@localhost IDENTIFIED BY '';
 
 USE zoomedcenter;
 
@@ -13,4 +13,14 @@ CREATE TABLE IF NOT EXISTS users(
   password VARCHAR (20) NOT NULL ,
   enabled TINYINT NOT NULL DEFAULT 1 ,
   PRIMARY KEY (username)
+) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS roles (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  username varchar(20) NOT NULL,
+  role varchar(20) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uni_username_role (role,username),
+  KEY fk_username_idx (username),
+  CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username)
 ) engine=InnoDB;
